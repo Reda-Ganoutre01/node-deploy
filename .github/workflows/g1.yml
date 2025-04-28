@@ -1,0 +1,18 @@
+name: Deploiement sur Github Pages
+on:
+  push:
+    branches:
+      -main:
+    permissions:
+      contents: write
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          -name:Reccuperer le code source
+            uses: actions/checkout@v3
+            -name:Deployer sur Github Pages
+            uses: peaceiris/actions-gh-pages@v3
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_dir: ./src
